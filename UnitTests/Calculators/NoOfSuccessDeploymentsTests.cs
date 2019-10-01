@@ -10,16 +10,13 @@ namespace TechTest.UnitTests.Calculators
     public class NoOfSuccessDeploymentsTests
     {
         private INoOfSuccessDeployments _calculator;
-        private Projects _projects;
+        private IList<Project> _projects;
 
         [SetUp]
         public void Setup()
         {
             _calculator = new NoOfSuccessDeployments();
-            _projects = new Projects()
-            {
-                projects = new List<Project>()
-            };
+            _projects = new List<Project>();
         }
 
         #region Test Methods
@@ -49,7 +46,7 @@ namespace TechTest.UnitTests.Calculators
                  }
             };
 
-            _projects.projects.Add(project);
+            _projects.Add(project);
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -78,7 +75,7 @@ namespace TechTest.UnitTests.Calculators
                  }
             };
 
-            _projects.projects.Add(project);
+           _projects.Add(project);
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -121,8 +118,8 @@ namespace TechTest.UnitTests.Calculators
                  }
             };
 
-            _projects.projects.Add(project1);
-            _projects.projects.Add(project2);
+            _projects.Add(project1);
+            _projects.Add(project2);
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -150,7 +147,7 @@ namespace TechTest.UnitTests.Calculators
                  }
             };
 
-            _projects.projects.Add(project);
+            _projects.Add(project);
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -181,7 +178,7 @@ namespace TechTest.UnitTests.Calculators
                  releases = new List<Release>()
             };
 
-            _projects.projects.Add(project);
+            _projects.Add(project);
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -205,7 +202,7 @@ namespace TechTest.UnitTests.Calculators
                  }
             };
 
-            _projects.projects.Add(project);
+            _projects.Add(project);
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -218,7 +215,7 @@ namespace TechTest.UnitTests.Calculators
         public void Calculate_When_Empty_Dataset_Returns_Zero()
         {
             // Arrange
-            _projects = new Projects();
+            // Handled in set up
 
             // Act
             var result = _calculator.Calculate(_projects);
@@ -230,14 +227,9 @@ namespace TechTest.UnitTests.Calculators
         [Test]
         public void Calculate_When_Dataset_Null_Throws_Exception()
         {
-            // Arrange
-
-            // Act
-            var result = _calculator.Calculate(_projects);
-
             // Assert
             Assert.Throws<ApplicationException>(delegate {
-                _calculator.Calculate(_projects);
+                _calculator.Calculate(null);
             });
         }
 
