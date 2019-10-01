@@ -234,9 +234,5 @@ namespace TechTest.UnitTests.Calculators
         }
 
         #endregion
-
-        #region Setup helpers
-
-        #endregion
     }
 }

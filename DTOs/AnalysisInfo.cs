@@ -40,6 +40,15 @@
         }
 
         /// <summary>
+        /// Break down of successful deployments by project group, 
+        /// by environment and year
+        /// </summary>
+        public DeploymentBreakdown SuccessfulDeploymentBreakdown
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// The most popular day of the week for live deployments
         /// </summary>
         string MostPopularLiveDeploymentWeekday
