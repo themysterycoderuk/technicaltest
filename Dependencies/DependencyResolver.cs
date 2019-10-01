@@ -18,8 +18,9 @@ namespace TechTest.Dependencies
         {
             services.AddSingleton<IJSONLoader, JSONLoader>();
             services.AddScoped<IReporter, Reporter>();
-            services.AddTransient<INoOfSuccessDeploymentsCalc, NoOfSuccessDeploymentsCalc>();
-            services.AddTransient<ISuccessDeploymentBreakdownCalc, SuccessDeploymentBreakdownCalc>();
+            services.AddScoped<INoOfSuccessDeploymentsCalc, NoOfSuccessDeploymentsCalc>();
+            services.AddScoped<ISuccessDeploymentBreakdownCalc, SuccessDeploymentBreakdownCalc>();
+            services.AddScoped<IMostPopularDayForLiveCalc, MostPopularDayForLiveCalc>();
         }
     }
 }

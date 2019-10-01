@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DTOs
 { 
@@ -53,7 +54,7 @@ namespace DTOs
         /// <summary>
         /// The most popular day of the week for live deployments
         /// </summary>
-        string MostPopularLiveDeploymentWeekday
+        public DayOfWeek? MostPopularLiveDeploymentWeekday
         {
             get; set;
         }

@@ -11,15 +11,18 @@ namespace TechTest.Business
         private IJSONLoader _loader;
         private INoOfSuccessDeploymentsCalc _noofsuccessdeploymentscalc;
         private ISuccessDeploymentBreakdownCalc _successDeploymentBreakdownCalc;
+        private IMostPopularDayForLiveCalc _mostpopulardayforlivecalc;
 
         public Reporter(
             IJSONLoader loader,
             INoOfSuccessDeploymentsCalc noofsuccessdeploymentscalc,
-            ISuccessDeploymentBreakdownCalc successDeploymentBreakdownCalc)
+            ISuccessDeploymentBreakdownCalc successdeploymentbreakdowncalc,
+            IMostPopularDayForLiveCalc mostpopulardayforlivecalc)
         {
             _loader = loader;
             _noofsuccessdeploymentscalc = noofsuccessdeploymentscalc;
-            _successDeploymentBreakdownCalc = successDeploymentBreakdownCalc;
+            _successDeploymentBreakdownCalc = successdeploymentbreakdowncalc;
+            _mostpopulardayforlivecalc = mostpopulardayforlivecalc;
         }
 
         public AnalysisInfo AnalyseDataset(string filename)
@@ -34,11 +37,15 @@ namespace TechTest.Business
             var successbreakdown =
                 _successDeploymentBreakdownCalc.Calculate(projects.projects);
 
+            var mostpopularliveday =
+                _mostpopulardayforlivecalc.Calculate(projects.projects);
+
             // Compose results into Analysis DTO to be returned
             var results = new AnalysisInfo()
             {
                 TotalNoOfSuccessfulDeployments = noofsuccessdeployments,
-                SuccessfulDeploymentBreakdown = successbreakdown
+                SuccessfulDeploymentBreakdown = successbreakdown,
+                MostPopularLiveDeploymentWeekday = mostpopularliveday
             };
 
             return results;

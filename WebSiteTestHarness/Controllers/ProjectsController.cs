@@ -37,7 +37,7 @@ namespace WebSiteTestHarness.Controllers
         public async Task<IActionResult> GetProjectCount(ProjectsInfoViewModel model)
         {
             var results = await Task.Run(() => _reporter.AnalyseDataset(model.Filename));
-            TempData.Put<AnalysisInfo>("RESULTS", results);
+            //TempData.Put<AnalysisInfo>("RESULTS", results);
             return RedirectToAction("Index", new { filename = model.Filename }) ;
         }
     }

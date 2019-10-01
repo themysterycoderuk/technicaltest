@@ -16,7 +16,7 @@
     </div>
 </form>
 
-@if (!string.IsNullOrEmpty(Model.Filename))
+@if (Model.Results != null)
 {
     <div>Total no of successful deployments = @Model.Results.TotalNoOfSuccessfulDeployments</div>
     <h2>Breakdown</h2>
