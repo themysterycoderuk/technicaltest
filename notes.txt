@@ -1,0 +1,16 @@
+Working notes:
+
+Examine provided test data to ascertain number of records, size of data etc.
+in order to ascertain the best solution i.e. taking into account potential
+memory usage, disk access etc.
+
+	--> Test data set is quite large (approx 20Mb), this is quite a lot 
+		to hold in memory.  First step is to write quick piece of code to
+		see how long it would take to deserialise this test data json
+		to POCOs for subsequent manipulation with LINQ.
+
+	--> An alternative approach would be to read the input in as a stream
+		and to keep running totals for the values required
+
+Define entity/DTO classes initially.  No need to place Unit tests around these 
+as they are going to be simple POCOS
