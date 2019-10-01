@@ -12,5 +12,8 @@ memory usage, disk access etc.
 	--> An alternative approach would be to read the input in as a stream
 		and to keep running totals for the values required
 
+	--> Possibility of deserialise and store in a star schema to optimise
+		reporting?
+
 Define entity/DTO classes initially.  No need to place Unit tests around these 
 as they are going to be simple POCOS
