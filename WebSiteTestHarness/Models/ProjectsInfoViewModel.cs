@@ -1,9 +1,11 @@
-﻿namespace TechTest.WebSiteTestHarness.Models
+﻿using DTOs;
+
+namespace TechTest.WebSiteTestHarness.Models
 {
     public class ProjectsInfoViewModel
     {
         public string Filename { get; set; }
 
-        public int NoOfProjects { get; set; }
+        public AnalysisInfo Results { get; set; }
     }
 }

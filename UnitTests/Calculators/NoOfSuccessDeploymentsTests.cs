@@ -9,13 +9,13 @@ namespace TechTest.UnitTests.Calculators
 {
     public class NoOfSuccessDeploymentsTests
     {
-        private INoOfSuccessDeployments _calculator;
+        private INoOfSuccessDeploymentsCalc _calculator;
         private IList<Project> _projects;
 
         [SetUp]
         public void Setup()
         {
-            _calculator = new NoOfSuccessDeployments();
+            _calculator = new NoOfSuccessDeploymentsCalc();
             _projects = new List<Project>();
         }
 

@@ -22,29 +22,21 @@
     /// </summary>
     public class AnalysisInfo
     {
-        private readonly int _noofsuccessdeployments;
-        private readonly string _mostpopularliveday;
-
         /// <summary>
         /// Constructor used to set readonly fields.  Please refer
         /// to documentation for properties for more info of inputs
         /// </summary>
         /// <param name="noofsuccessdeployments"><see cref="TotalNoOfSuccessfulDeployments"/></param>
         /// <param name="mostpopularliveday"><see cref="MostPopularLiveDeploymentWeekday"/></param>
-        public AnalysisInfo(
-            int noofsuccessdeployments,
-            string mostpopularliveday)
-        {
-            _noofsuccessdeployments = noofsuccessdeployments;
-            _mostpopularliveday = mostpopularliveday;
-        }
+        public AnalysisInfo()
+        {}
 
         /// <summary>
         /// Total number of successful deployments
         /// </summary>
-        int TotalNoOfSuccessfulDeployments
+        public int TotalNoOfSuccessfulDeployments
         {
-            get { return _noofsuccessdeployments; }
+            get; set;
         }
 
         /// <summary>
@@ -52,7 +44,7 @@
         /// </summary>
         string MostPopularLiveDeploymentWeekday
         {
-            get { return _mostpopularliveday; }
+            get; set;
         }
     }
 }

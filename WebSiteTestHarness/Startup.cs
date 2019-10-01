@@ -34,6 +34,10 @@ namespace WebSiteTestHarness
             // Add our dependencies
             DependencyResolver.AddBindings(services);
 
+            services.Configure<CookieTempDataProviderOptions>(options => {
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

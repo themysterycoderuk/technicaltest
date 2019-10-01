@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using techTest.Interfaces.Business.Calculators;
 using TechTest.Business;
 using TechTest.Data;
 using TechTest.Interfaces.Business;
@@ -16,6 +17,7 @@ namespace TechTest.Dependencies
         {
             services.AddSingleton<IJSONLoader, JSONLoader>();
             services.AddScoped<IReporter, Reporter>();
+            services.AddTransient<INoOfSuccessDeploymentsCalc, NoOfSuccessDeploymentsCalc>();
         }
     }
 }

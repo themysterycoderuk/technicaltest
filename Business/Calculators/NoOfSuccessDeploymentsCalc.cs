@@ -6,7 +6,7 @@ using TechTest.Entities;
 
 namespace TechTest.Business
 {
-    public class NoOfSuccessDeployments : INoOfSuccessDeployments
+    public class NoOfSuccessDeploymentsCalc : INoOfSuccessDeploymentsCalc
     {
         public int Calculate(IList<Project> projects)
         {

@@ -24,3 +24,9 @@ via an input stream from a file and serialised to the POCO entity/object
 graph.  Therefore am going to proceed with a solution using LINQ.
 
 Defining DTO object to hold the required results for a dataset.
+
+Defining Unit tests for first calculated metric
+
+Implementing code for first calculated metric
+
+Creating test harness so can access metric performance against the test dataset
