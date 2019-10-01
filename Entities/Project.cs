@@ -26,12 +26,12 @@ namespace TechTest.Entities
         /// UAT
         /// Live
         /// </summary>
-        IList<Environment> environments { get; set; }
+        public IList<Environment> environments { get; set; }
 
         /// <summary>
         /// One or more releases.  Releases are ordered by Version
         /// from earliest to latest
         /// </summary>
-        IList<Release> releases { get; set; }
+        public IList<Release> releases { get; set; }
     }
 }
