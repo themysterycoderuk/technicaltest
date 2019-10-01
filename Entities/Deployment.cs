@@ -2,6 +2,9 @@
 
 namespace TechTest.Entities
 {
+    /// <summary>
+    /// Simple POCO representation of a deployment
+    /// </summary>
     public class Deployment
     {
         /// <summary>

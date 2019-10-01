@@ -1,0 +1,23 @@
+﻿@model TechTest.WebSiteTestHarness.Models.ProjectsInfoViewModel
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<h1>Projects</h1>
+<form asp-controller="Projects" asp-action="GetProjectCount" method="post">
+    <div>
+        <label>Filename to process:</label>
+    </div>
+    <div>
+        <input asp-for="Filename" width="80" />
+    </div>
+    <div>
+        <input type="submit" value="Process" />
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Filename))
+{
+    <div>No of projects found = @Model.NoOfProjects</div>
+}
+

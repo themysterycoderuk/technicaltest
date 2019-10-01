@@ -2,6 +2,9 @@
 
 namespace TechTest.Entities
 {
+    /// <summary>
+    /// Simple POCO representation of a release
+    /// </summary>
     public class Release
     {
         /// <summary>

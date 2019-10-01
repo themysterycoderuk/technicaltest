@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TechTest.Dependencies;
 
 namespace WebSiteTestHarness
 {
@@ -30,6 +31,8 @@ namespace WebSiteTestHarness
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Add our dependencies
+            DependencyResolver.AddBindings(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

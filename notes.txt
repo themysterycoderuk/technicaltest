@@ -17,3 +17,10 @@ memory usage, disk access etc.
 
 Define entity/DTO classes initially.  No need to place Unit tests around these 
 as they are going to be simple POCOS
+
+Initial simple test code to load test data file and report number of projects
+indicates that doing it in memory will not be an issue.  Data is read in
+via an input stream from a file and serialised to the POCO entity/object
+graph.  Therefore am going to proceed with a solution using LINQ.
+
+Defining DTO object to hold the required results for a dataset.

@@ -5,4 +5,17 @@
     <RootNamespace>TechTest.Data</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Simple.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>
