@@ -10,19 +10,16 @@ namespace TechTest.Business
     {
         private IJSONLoader _loader;
         private INoOfSuccessDeploymentsCalc _noofsuccessdeploymentscalc;
+        private ISuccessDeploymentBreakdownCalc _successDeploymentBreakdownCalc;
 
         public Reporter(
             IJSONLoader loader,
-            INoOfSuccessDeploymentsCalc noofsuccessdeploymentscalc)
+            INoOfSuccessDeploymentsCalc noofsuccessdeploymentscalc,
+            ISuccessDeploymentBreakdownCalc successDeploymentBreakdownCalc)
         {
             _loader = loader;
             _noofsuccessdeploymentscalc = noofsuccessdeploymentscalc;
-        }
-
-        public int GetNoOfProjects(string filename)
-        {
-            var projects = _loader.LoadFromFile(filename);
-            return projects.projects.Count;
+            _successDeploymentBreakdownCalc = successDeploymentBreakdownCalc;
         }
 
         public AnalysisInfo AnalyseDataset(string filename)
@@ -34,10 +31,14 @@ namespace TechTest.Business
             var noofsuccessdeployments = 
                 _noofsuccessdeploymentscalc.Calculate(projects.projects);
 
+            var successbreakdown =
+                _successDeploymentBreakdownCalc.Calculate(projects.projects);
+
             // Compose results into Analysis DTO to be returned
             var results = new AnalysisInfo()
             {
-                TotalNoOfSuccessfulDeployments = noofsuccessdeployments
+                TotalNoOfSuccessfulDeployments = noofsuccessdeployments,
+                SuccessfulDeploymentBreakdown = successbreakdown
             };
 
             return results;

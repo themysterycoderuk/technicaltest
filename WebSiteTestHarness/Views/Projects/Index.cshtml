@@ -19,5 +19,29 @@
 @if (!string.IsNullOrEmpty(Model.Filename))
 {
     <div>Total no of successful deployments = @Model.Results.TotalNoOfSuccessfulDeployments</div>
+    <h2>Breakdown</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Project group</th>
+                <th>Environment</th>
+                <th>Year</th>
+                <th>Number successful deployments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var summary in Model.Results.SuccessfulDeploymentBreakdown)
+            {
+                <tr>
+                    <td>@summary.ProjectGroup</td>
+                    <td>@summary.Environment</td>
+                    <td>@summary.Year</td>
+                    <td>@summary.NoOfSuccessDeployments</td>
+                </tr>
+            }
+        </tbody>foreach
+    </table>
 }
+
+
 

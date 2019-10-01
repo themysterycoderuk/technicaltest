@@ -1,4 +1,6 @@
-﻿namespace DTOs
+﻿using System.Collections.Generic;
+
+namespace DTOs
 { 
     /// <summary>
     /// Interface to define the structure needed to return results of 
@@ -43,7 +45,7 @@
         /// Break down of successful deployments by project group, 
         /// by environment and year
         /// </summary>
-        public DeploymentBreakdown SuccessfulDeploymentBreakdown
+        public IList<DeploymentBreakdown> SuccessfulDeploymentBreakdown
         {
             get; set;
         }

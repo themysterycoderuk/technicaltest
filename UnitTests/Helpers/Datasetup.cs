@@ -21,7 +21,7 @@ namespace TechTest.UnitTests.Helpers
         {
             var project = new Project()
             {
-                project_id = id ?? new Guid(),
+                project_id = id ?? Guid.NewGuid(),
                 project_group = group ?? cDEFAULT_PROJECTGROUP,
                 environments = environments ?? new List<Entities.Environment>()
                 {
@@ -47,7 +47,7 @@ namespace TechTest.UnitTests.Helpers
             DateTime? created = null)
         {
             var project = AddProject(projects, id, group, projectenvironments);
-            AddReleaseWithSingleDeployment(projects[0], version, isSuccess, environment, created);
+            AddReleaseWithSingleDeployment(project, version, isSuccess, environment, created);
             return project;
         }
 
@@ -75,7 +75,7 @@ namespace TechTest.UnitTests.Helpers
             DateTime? created = null)
         {
             var release = AddRelease(project, version);
-            AddDeployment(project.releases[0], isSuccess, environment, created);
+            AddDeployment(release, isSuccess, environment, created);
             return release;
         }
 

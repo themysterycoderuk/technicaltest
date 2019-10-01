@@ -4,7 +4,7 @@ using System.Linq;
 using techTest.Interfaces.Business.Calculators;
 using TechTest.Entities;
 
-namespace TechTest.Business
+namespace TechTest.Business.Calculators
 {
     public class NoOfSuccessDeploymentsCalc : INoOfSuccessDeploymentsCalc
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using techTest.Interfaces.Business.Calculators;
-using TechTest.Business;
+using TechTest.Business.Calculators;
 using TechTest.Entities;
 
 namespace TechTest.UnitTests.Calculators
