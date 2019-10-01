@@ -58,5 +58,26 @@ namespace DTOs
         {
             get; set;
         }
+
+        /// <summary>
+        /// The average length of time a release takes
+        /// from integration to live, by project group
+        /// </summary>
+        public IList<IntegrationToLiveBreakdown> IntegrationToLiveBreakdowns
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// A break down by project group of success 
+        /// and unsuccessful releases (unsuccessful being releases that 
+        /// aren't sucessfully deployed to live), the number of deployments
+        /// involved in the release pipeline and whether some environments
+        /// had to be repeatedly deployed
+        /// </summary>
+        public IList<PipelineBreakdown> PipelineBreakdowns
+        {
+            get; set;
+        }
     }
 }

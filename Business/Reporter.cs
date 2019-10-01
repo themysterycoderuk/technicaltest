@@ -12,17 +12,23 @@ namespace TechTest.Business
         private INoOfSuccessDeploymentsCalc _noofsuccessdeploymentscalc;
         private ISuccessDeploymentBreakdownCalc _successDeploymentBreakdownCalc;
         private IMostPopularDayForLiveCalc _mostpopulardayforlivecalc;
+        private IIntegrationToLiveAverageCalc _integrationtolivecalc;
+        private IPipelineBreakdownCalc _pipelinebreakdowncalc;
 
         public Reporter(
             IJSONLoader loader,
             INoOfSuccessDeploymentsCalc noofsuccessdeploymentscalc,
             ISuccessDeploymentBreakdownCalc successdeploymentbreakdowncalc,
-            IMostPopularDayForLiveCalc mostpopulardayforlivecalc)
+            IMostPopularDayForLiveCalc mostpopulardayforlivecalc,
+            IIntegrationToLiveAverageCalc integrationtolivecalc,
+            IPipelineBreakdownCalc pipelinebreakdowncalc)
         {
             _loader = loader;
             _noofsuccessdeploymentscalc = noofsuccessdeploymentscalc;
             _successDeploymentBreakdownCalc = successdeploymentbreakdowncalc;
             _mostpopulardayforlivecalc = mostpopulardayforlivecalc;
+            _integrationtolivecalc = integrationtolivecalc;
+            _pipelinebreakdowncalc = pipelinebreakdowncalc;
         }
 
         public AnalysisInfo AnalyseDataset(string filename)
@@ -40,12 +46,20 @@ namespace TechTest.Business
             var mostpopularliveday =
                 _mostpopulardayforlivecalc.Calculate(projects.projects);
 
+            var inttoliveaverage =
+                _integrationtolivecalc.Calculate(projects.projects);
+
+            var pipelinebreakdown =
+                _pipelinebreakdowncalc.Calculate(projects.projects);
+
             // Compose results into Analysis DTO to be returned
             var results = new AnalysisInfo()
             {
                 TotalNoOfSuccessfulDeployments = noofsuccessdeployments,
                 SuccessfulDeploymentBreakdown = successbreakdown,
-                MostPopularLiveDeploymentWeekday = mostpopularliveday
+                MostPopularLiveDeploymentWeekday = mostpopularliveday,
+                IntegrationToLiveBreakdowns = inttoliveaverage,
+                PipelineBreakdowns = pipelinebreakdown
             };
 
             return results;

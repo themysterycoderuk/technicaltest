@@ -21,6 +21,8 @@ namespace TechTest.Dependencies
             services.AddScoped<INoOfSuccessDeploymentsCalc, NoOfSuccessDeploymentsCalc>();
             services.AddScoped<ISuccessDeploymentBreakdownCalc, SuccessDeploymentBreakdownCalc>();
             services.AddScoped<IMostPopularDayForLiveCalc, MostPopularDayForLiveCalc>();
+            services.AddScoped<IIntegrationToLiveAverageCalc, IntegrationToLiveAverageCalc>();
+            services.AddScoped<IPipelineBreakdownCalc, PipelineBreakdownCalc>();
         }
     }
 }

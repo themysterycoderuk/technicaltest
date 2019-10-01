@@ -1,0 +1,23 @@
+Report run at 01/10/2019 22:36:12
+
+
+Output 1: Number of successful deployments
+=========
+Total number of successful deployments = 6
+
+Output 2: Breakdown by project group, environment and year
+=========
+Spaniel   Integration 2019 2
+Spaniel   Live 2019 1
+Spaniel   Test 2019 3
+
+Output 3: most popular day fr live deployments
+=========
+Most popular day for live deployments is Friday
+
+Output 4: Average time from integration to live deployment by project group
+=========
+Spaniel   3.02:22:16
+
+Output 5: Breakdown
+=========
