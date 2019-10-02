@@ -23,6 +23,9 @@
 
 
   <ItemGroup>
+    <Content Update="projects.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Simple.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

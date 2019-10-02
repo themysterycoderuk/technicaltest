@@ -26,7 +26,7 @@ namespace WebSiteTestHarness.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var jsonfile = "Projects.json";
+            var jsonfile = "projects.json";
             var results = await Task.Run(() => _reporter.AnalyseDataset(jsonfile));
 
             // Format the output
