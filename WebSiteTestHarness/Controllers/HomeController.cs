@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using TechTest.Business;
-using TechTest.Interfaces.Business;
-using WebSiteTestHarness.Models;
+using TechTest.WebSiteTestHarness.Models;
 
-namespace WebSiteTestHarness.Controllers
+namespace TechTest.WebSiteTestHarness.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : controllerBase
     {
-        public HomeController()
+        private readonly IHostingEnvironment _env;
+
+        public HomeController(
+            IHostingEnvironment env
+        )
         {
+            _env = env;
         }
 
         public IActionResult Index()
@@ -21,8 +21,11 @@ namespace WebSiteTestHarness.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [Route("Approach")]
+        public IActionResult Approach()
         {
+            ViewBag.Title = "Approach";
+            addHomeToBreadCrumb();
             return View();
         }
 

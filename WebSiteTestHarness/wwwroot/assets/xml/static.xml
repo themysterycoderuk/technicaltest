@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Container>
+  <Countries>
+    <Country>
+      <Code>Code1</Code>
+      <Title>Title1</Title>
+    </Country>
+
+    <Country>
+      <Code>Code2</Code>
+      <Title>Title2</Title>
+    </Country>
+  </Countries>
+</Container>

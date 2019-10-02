@@ -26,7 +26,7 @@ namespace WebSiteTestHarness.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var jsonfile = "Simple.json";
+            var jsonfile = "Projects.json";
             var results = await Task.Run(() => _reporter.AnalyseDataset(jsonfile));
 
             // Format the output
@@ -121,14 +121,6 @@ namespace WebSiteTestHarness.Controllers
 
             var stream = new FileStream(docPath, FileMode.Open);
             return new FileStreamResult(stream, "text/plain");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> GetProjectCount(ProjectsInfoViewModel model)
-        {
-            var results = await Task.Run(() => _reporter.AnalyseDataset(model.Filename));
-            //TempData.Put<AnalysisInfo>("RESULTS", results);
-            return RedirectToAction("Index", new { filename = model.Filename }) ;
         }
     }
 }

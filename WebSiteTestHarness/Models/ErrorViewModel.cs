@@ -1,6 +1,6 @@
 using System;
 
-namespace WebSiteTestHarness.Models
+namespace TechTest.WebSiteTestHarness.Models
 {
     public class ErrorViewModel
     {

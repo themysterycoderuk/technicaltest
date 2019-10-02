@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewData["Title"] = "Approach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1 class="nhsuk-u-margin-bottom-5">The Approach</h1>
+        <p class="nhsuk-body-l">
+            This page details the approach that was taken with regard to code structure
+            and deployment of the solution
+        </p>
+
+        <h2 class="nhsuk-u-margin-bottom-5">Starting Out</h2>
+        <p>
+            On receiving the technical test instructions immediately was
+            drawn to the idea of serialising the JSON into in-memory objects.
+            In order to check this would not be too resource hungry I wrote
+            a quick test harness to deserialise the test data JSON file suplied.
+            Having done this I was more confident in taking this approach
+        </p>
+
+        <h2 class="nhsuk-u-margin-bottom-5">Flexibility over Efficiency</h2>
+        <p>
+            The test outlined effectively 5 different reports which needed to
+            be output.  2 of these were simple single values but the other 3
+            were slightly complex breakdowns of data.  I was keen to develop
+            the solution using TDD and was concerned about the complexity and
+            testabilitly of doing all 5 reports in one pass of the data.
+        </p>
+        <p>
+            I therefore implemented a seperate calculator class for each of the
+            reports which would return DTO(s) representing the report data.
+            A stub was created and Unit Tests authored and then the calculator
+            class was implemented.  This was done incrementally for all 5 of the reports
+        </p>
+        <p>
+            The calculator classes were all coded to an interface and injected
+            using .NET MVC Core Dependency injection via a Mediator type pattern.
+            These 5 interfaces were then injected into a single Reporting business
+            class which would compose all 5 reports into a single DTO output.
+        </p>
+        <p>
+            The calculator classes make heavy use of LINQ to flatten and
+            manipulate the de-serialised JSON.
+        </p>
+
+        <h2 class="nhsuk-u-margin-bottom-5">Outputting the Report</h2>
+        <p>
+            An MVC Web Test Harness was created in order to allow the report
+            to be run.  It is currently hardcoded to use the Projects.json test
+            data file provided.  The Reporting class is called and then the returned
+            DTO formatted into a text file which is then returned from the
+            controller method.
+        </p>
+
+        <h2 class="nhsuk-u-margin-bottom-5">Other Stuff</h2>
+        <p>
+            Included in the Web Site test harness is an option to run the
+            unit tests within the solution.  This custom test runner
+            code makes use of NUnit.Api.Engine and retrieves and
+            interactively runs the unit tests by exmaining the UnitTest
+            assembly.  The accompanying web view makes use of some AJAX
+            to run the tests and return the results to the screen.
+        </p>
+
+        <h2 class="nhsuk-u-margin-bottom-5">Deployment</h2>
+        <p>
+            The scenario solution, web site, unit tests and custom 
+            unit test runner have been converted into a Docker image 
+            running the Microsoft .NET Core 2.2 runtime on an Ubuntu 
+            image. This image has been stored in an AWS Elastic Container 
+            Registry (ECR).
+        </p>
+        <p>
+            This image is referenced from a task definition which is 
+            then used by an AWS Elastic Container Service (ECS) Cluster 
+            which is spread across 2 availability zones and is deployed 
+            using the Fargate serverless deployment type for ECS with 
+            appropriate health checks and recovery scaling.
+        </p>
+        <p>
+            The ECS cluster has an AWS ELB Application Load Balancer in 
+            front of it. An alias to this load balancer has then been 
+            set up as an A record in Route53 for the purchased domain 
+            themysterycoder.com
+        </p>
+
+        <h2 class="nhsuk-u-margin-bottom-5">What Else Would I Have Done?</h2>
+        <p>
+            Due to time constraints the following did not get done or were
+            not able to be investigated further:
+        </p>
+        <ul>
+            <li>
+                Unit tests are missing for the 4th report (average time between
+                Integration and Live deployments).  I took the decision to implement
+                the code first for this report as was concerned as to the complexity
+                of the Unit Tests which would be required
+            </li>
+            <li>
+                Would have liked to have implemented a formatter class/interface
+                around each of the calculator classes so that the formatting
+                of the output text file was not all in one controller action method
+            </li>
+            <li>
+                Would have liked to refactor the calculator classes to implement
+                a generic interface to then allow for compisition when injecting
+                them into the reporting class.  This would also tie in with the
+                idea of formatting classes to allow for flexible reports to be
+                produced
+            </li>
+            <li>
+                Would have liked to have re-visited the LINQ code in the calculator
+                classes to see if any refactoring could be done
+            </li>
+            <li>
+                Would have liked to enhance the web site test harness to allow for
+                upload of JSON files and reporting upon them.
+            </li>
+        </ul>
+    </div>
+</div>
+
