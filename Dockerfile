@@ -12,6 +12,6 @@ RUN dotnet publish -c Release -o out
 # Compose the oputput of this build with a .NET Core 2.2 runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app
-COPY --from=build /app/WebSolution/out ./
+COPY --from=build /app/WebSiteTestHarness/out ./
 RUN ls
 ENTRYPOINT ["dotnet", "WebSiteTestHarness.dll"]
