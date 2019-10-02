@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 # Build web application
-WORKDIR /app/WebSolution
+WORKDIR /app/WebSiteTestHarness
 ENV ASPNETCORE_ENVIRONMENT Production
 RUN dotnet publish -c Release -o out
 
