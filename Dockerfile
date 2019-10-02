@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app
 COPY --from=build /app/WebSolution/out ./
 RUN ls
-ENTRYPOINT ["dotnet", "WebSolution.dll"]
+ENTRYPOINT ["dotnet", "WebSiteTestHarness.dll"]
