@@ -32,7 +32,8 @@ namespace WebSiteTestHarness.Controllers
             // Format the output
             var reportfile = $"report-{DateTime.Now.ToString("yyyyMMddTHHmmssfffffff")}";
             string docPath = $"{_hostingEnvironment.WebRootPath}/Temp/{reportfile}";
-            
+            Console.WriteLine($"Writing file to {docPath}");
+
             using (var outputFile = new StreamWriter(docPath))
             {
                 outputFile.WriteLine($"Report run at {DateTime.Now}");
@@ -119,6 +120,8 @@ namespace WebSiteTestHarness.Controllers
                 }
             }
 
+            Console.WriteLine("Written");
+            Console.WriteLine($"Reading", docPath);
             var stream = new FileStream(docPath, FileMode.Open);
             return new FileStreamResult(stream, "text/plain");
         }
